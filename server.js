@@ -15,7 +15,7 @@ server.use(
 server.use(middlewares);
 server.use(router);
 
-const PORT = 3000;
+const PORT = 8001;
 const HOST = "0.0.0.0";
 
 server.listen(PORT, HOST, () => {
