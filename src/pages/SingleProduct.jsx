@@ -2,11 +2,11 @@ import axios from "axios";
 import React, { useState } from "react";
 import { FaCartShopping, FaHeart } from "react-icons/fa6";
 import {
-    QuantityInput,
-    SectionTitle,
-    SelectSize,
-    SingleProductRating,
-    SingleProductReviews,
+  QuantityInput,
+  SectionTitle,
+  SelectSize,
+  SingleProductRating,
+  SingleProductReviews,
 } from "../components";
 
 import parse from "html-react-parser";
@@ -16,15 +16,15 @@ import { useLoaderData } from "react-router-dom";
 import { toast } from "react-toastify";
 import { addToCart } from "../features/cart/cartSlice";
 import {
-    removeFromWishlist,
-    updateWishlist,
+  removeFromWishlist,
+  updateWishlist,
 } from "../features/wishlist/wishlistSlice";
 import { store } from "../store";
 
 export const singleProductLoader = async ({ params }) => {
   const { id } = params;
 
-  const response = await axios(`http://localhost:8000/products/${id}`);
+  const response = await axios(`http://202.51.3.168:8000/products/${id}`);
 
   return { productData: response.data };
 };
@@ -72,7 +72,6 @@ const SingleProduct = () => {
       );
       const userObj = getResponse.data;
 
-      
       userObj.userWishlist = userObj.userWishlist || [];
 
       userObj.userWishlist.push(product);
@@ -82,7 +81,6 @@ const SingleProduct = () => {
         userObj
       );
 
-      
       store.dispatch(updateWishlist({ userObj }));
       toast.success("Product added to the wishlist!");
     } catch (error) {
@@ -109,7 +107,6 @@ const SingleProduct = () => {
       userObj
     );
 
-    
     store.dispatch(removeFromWishlist({ userObj }));
     toast.success("Product removed from the wishlist!");
   };
@@ -238,8 +235,7 @@ const SingleProduct = () => {
               Category: {productData?.category}
             </div>
             <div className="badge bg-gray-700 badge-lg font-bold text-white p-5 mt-2">
-              Production Date:{" "}
-              {productData?.productionDate?.substring(0, 10)}
+              Production Date: {productData?.productionDate?.substring(0, 10)}
             </div>
           </div>
         </div>

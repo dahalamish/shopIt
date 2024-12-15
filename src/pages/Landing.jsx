@@ -6,7 +6,7 @@ import "../styles/Landing.css";
 
 export const landingLoader = async () => {
   const response = await axios(
-    `http://localhost:8000/products?_page=1&_limit=8`
+    `http://202.51.3.168:8000/products?_page=1&_limit=8`
   );
   const data = response.data;
 
