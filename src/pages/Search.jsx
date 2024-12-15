@@ -14,7 +14,7 @@ const Search = () => {
     setSearchTerm((prevState) => e.target.search.value);
     try {
       const response = await axios(
-        `http://202.51.3.168:8000/products?q=${e.target.search.value}&_page=${currentPage}`
+        `http://localhost:8000/products?q=${e.target.search.value}&_page=${currentPage}`
       );
       const data = response.data;
       setProducts(data);

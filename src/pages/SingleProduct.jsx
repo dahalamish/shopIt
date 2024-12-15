@@ -24,7 +24,7 @@ import { store } from "../store";
 export const singleProductLoader = async ({ params }) => {
   const { id } = params;
 
-  const response = await axios(`http://202.51.3.168:8000/products/${id}`);
+  const response = await axios(`http://localhost:8000/products/${id}`);
 
   return { productData: response.data };
 };

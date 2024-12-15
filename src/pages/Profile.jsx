@@ -23,7 +23,7 @@ const Profile = () => {
 
   const getUserData = async () => {
     try {
-      const response = await axios(`http://202.51.3.168:8000/user/${id}`);
+      const response = await axios(`http://localhost:8000/user/${id}`);
       const data = response.data;
       setUserFormData({
         name: data.name,

@@ -57,9 +57,7 @@ export const shopLoader = async ({ request }) => {
     (filterObj.date ? `&productionDate=${filterObj.date}` : ``); // It only matched exact for the date and time.
 
   try {
-    const response = await axios(
-      `http://202.51.3.168:8000/products${parameter}`
-    );
+    const response = await axios(`http://localhost:8000/products${parameter}`);
     let data = response.data;
 
     // sorting in descending order
