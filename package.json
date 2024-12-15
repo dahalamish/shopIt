@@ -11,7 +11,7 @@
     "preview": "vite preview",
     "json": "json-server --watch src/data/db.json --port 3000 --host 0.0.0.0"
   },
-  "proxy": "http://localhost:3000", // Add this line
+  "proxy": "http://localhost:3000",
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.7",
     "axios": "^1.6.0",
