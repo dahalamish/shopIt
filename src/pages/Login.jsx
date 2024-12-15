@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { SectionTitle } from "../components";
-import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
-import { store } from "../store";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { SectionTitle } from "../components";
 import { loginUser, logoutUser } from "../features/auth/authSlice";
+import { store } from "../store";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -36,7 +36,7 @@ const Login = () => {
   const proceedLogin = (e) => {
     e.preventDefault();
     if (isValidate()) {
-      fetch("http://localhost:8080/user")
+      fetch("http://localhost:8000/user")
         .then((res) => res.json())
         .then((res) => {
           let data = res;

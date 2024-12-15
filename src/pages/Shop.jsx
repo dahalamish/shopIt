@@ -1,15 +1,15 @@
 /* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { nanoid } from "nanoid";
+import React from "react";
+import { useLoaderData } from "react-router-dom";
 import {
-  Filters,
-  Pagination,
-  ProductElement,
-  SectionTitle,
+    Filters,
+    Pagination,
+    ProductElement,
+    SectionTitle,
 } from "../components";
 import "../styles/Shop.css";
-import axios from "axios";
-import { useLoaderData, useNavigate, useSearchParams } from "react-router-dom";
-import { nanoid } from "nanoid";
 
 export const shopLoader = async ({ request }) => {
   const params = Object.fromEntries([
@@ -53,7 +53,7 @@ export const shopLoader = async ({ request }) => {
 
   try {
     const response = await axios(
-      `http://localhost:8080/products${parameter}`
+      `http://localhost:8000/products${parameter}`
 
     );
     let data = response.data;

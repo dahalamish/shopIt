@@ -1,10 +1,10 @@
+import axios from "axios";
+import { nanoid } from "nanoid";
 import React, { useEffect, useState } from "react";
-import { SectionTitle } from "../components";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import axios from "axios";
-import { nanoid } from "nanoid";
+import { SectionTitle } from "../components";
 
 const OrderHistory = () => {
   // cancelled, in progress, delivered
@@ -15,7 +15,7 @@ const OrderHistory = () => {
   const getOrderHistory = async () => {
     try {
       // saljemo get(default) request
-      const response = await axios.get("http://localhost:8080/orders");
+      const response = await axios.get("http://localhost:8000/orders");
       const data = response.data;
       setOrders(
         data.filter((order) => order.userId === localStorage.getItem("id"))

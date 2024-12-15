@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
-import { SectionTitle } from "../components";
-import { Link, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { store } from "../store";
+import { SectionTitle } from "../components";
 import { calculateTotals, clearCart } from "../features/cart/cartSlice";
+import { store } from "../store";
 
 const ThankYou = () => {
   const { cartItems } = useSelector((state) => state.cart);
@@ -16,7 +16,7 @@ const ThankYou = () => {
 
   const saveToOrderHistory = async () => {
     try {
-      const response = await axios.post("http://localhost:8080/orders", {
+      const response = await axios.post("http://localhost:8000/orders", {
         userId: localStorage.getItem("id"),
         orderStatus: "in progress",
         subtotal: total,

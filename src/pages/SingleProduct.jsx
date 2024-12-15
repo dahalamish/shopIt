@@ -1,31 +1,30 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { FaCartShopping, FaHeart } from "react-icons/fa6";
 import {
-  QuantityInput,
-  SectionTitle,
-  SelectSize,
-  SingleProductRating,
-  SingleProductReviews,
+    QuantityInput,
+    SectionTitle,
+    SelectSize,
+    SingleProductRating,
+    SingleProductReviews,
 } from "../components";
-import { FaHeart } from "react-icons/fa6";
-import { FaCartShopping } from "react-icons/fa6";
 
-import { Link, useLoaderData } from "react-router-dom";
 import parse from "html-react-parser";
 import { nanoid } from "nanoid";
 import { useDispatch, useSelector } from "react-redux";
+import { useLoaderData } from "react-router-dom";
+import { toast } from "react-toastify";
 import { addToCart } from "../features/cart/cartSlice";
 import {
-  updateWishlist,
-  removeFromWishlist,
+    removeFromWishlist,
+    updateWishlist,
 } from "../features/wishlist/wishlistSlice";
-import { toast } from "react-toastify";
 import { store } from "../store";
 
 export const singleProductLoader = async ({ params }) => {
   const { id } = params;
 
-  const response = await axios(`http://localhost:8080/products/${id}`);
+  const response = await axios(`http://localhost:8000/products/${id}`);
 
   return { productData: response.data };
 };
@@ -69,7 +68,7 @@ const SingleProduct = () => {
   const addToWishlistHandler = async (product) => {
     try {
       const getResponse = await axios.get(
-        `http://localhost:8080/user/${localStorage.getItem("id")}`
+        `http://localhost:8000/user/${localStorage.getItem("id")}`
       );
       const userObj = getResponse.data;
 
@@ -79,7 +78,7 @@ const SingleProduct = () => {
       userObj.userWishlist.push(product);
 
       const postResponse = await axios.put(
-        `http://localhost:8080/user/${localStorage.getItem("id")}`,
+        `http://localhost:8000/user/${localStorage.getItem("id")}`,
         userObj
       );
 
@@ -93,7 +92,7 @@ const SingleProduct = () => {
 
   const removeFromWishlistHandler = async (product) => {
     const getResponse = await axios.get(
-      `http://localhost:8080/user/${localStorage.getItem("id")}`
+      `http://localhost:8000/user/${localStorage.getItem("id")}`
     );
     const userObj = getResponse.data;
 
@@ -106,7 +105,7 @@ const SingleProduct = () => {
     userObj.userWishlist = newWishlist;
 
     const postResponse = await axios.put(
-      `http://localhost:8080/user/${localStorage.getItem("id")}`,
+      `http://localhost:8000/user/${localStorage.getItem("id")}`,
       userObj
     );
 

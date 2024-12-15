@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { SectionTitle } from "../components";
 import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { SectionTitle } from "../components";
 
 const Profile = () => {
   const [id, setId] = useState(localStorage.getItem("id"));
@@ -23,7 +23,7 @@ const Profile = () => {
 
   const getUserData = async () => {
     try {
-      const response = await axios(`http://localhost:8080/user/${id}`);
+      const response = await axios(`http://localhost:8000/user/${id}`);
       const data = response.data;
       setUserFormData({
         name: data.name,
@@ -51,11 +51,11 @@ const Profile = () => {
     e.preventDefault();
     try{
 
-      const getResponse = await axios(`http://localhost:8080/user/${id}`);
+      const getResponse = await axios(`http://localhost:8000/user/${id}`);
       const userObj = getResponse.data;
 
       // saljemo get(default) request
-      const putResponse = await axios.put(`http://localhost:8080/user/${id}`, {
+      const putResponse = await axios.put(`http://localhost:8000/user/${id}`, {
         id: id,
         name: userFormData.name,
         lastname: userFormData.lastname,
