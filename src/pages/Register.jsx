@@ -67,7 +67,7 @@ const Register = () => {
     };
 
     if (isValidate()) {
-      fetch("http://localhost:8000/user", {
+      fetch("http://localhost:3000/user", {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify(regObj),

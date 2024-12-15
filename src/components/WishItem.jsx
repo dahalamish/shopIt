@@ -11,7 +11,7 @@ const WishItem = ({ item, counter }) => {
 
   const removeFromWishlistHandler = async (product) => {
     const getResponse = await axios.get(
-      `http://localhost:8000/user/${localStorage.getItem("id")}`
+      `http://localhost:3000/user/${localStorage.getItem("id")}`
     );
     const userObj = getResponse.data;
 
@@ -24,7 +24,7 @@ const WishItem = ({ item, counter }) => {
     userObj.userWishlist = newWishlist;
 
     const postResponse = await axios.put(
-      `http://localhost:8000/user/${localStorage.getItem("id")}`,
+      `http://localhost:3000/user/${localStorage.getItem("id")}`,
       userObj
     );
 

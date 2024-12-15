@@ -16,7 +16,7 @@ const ThankYou = () => {
 
   const saveToOrderHistory = async () => {
     try {
-      const response = await axios.post("http://localhost:8000/orders", {
+      const response = await axios.post("http://localhost:3000/orders", {
         userId: localStorage.getItem("id"),
         orderStatus: "in progress",
         subtotal: total,
